@@ -1,0 +1,231 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "expressRoutePortName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Common resource representation.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID.",
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "ExpressRoutePort resource definition.",
+            "properties": {
+                "etag": {
+                    "description": "A unique read-only string that changes whenever the resource is updated.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "ExpressRoutePort properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allocationDate": {
+                            "description": "Date of the physical port allocation to be used in Letter of Authorization.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "bandwidthInGbps": {
+                            "description": "Bandwidth of procured ports in Gbps",
+                            "type": "integer"
+                        },
+                        "circuits": {
+                            "description": "Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.",
+                            "items": {
+                                "description": "Reference to another subresource.",
+                                "properties": {
+                                    "id": {
+                                        "description": "Resource ID.",
+                                        "type": "string"
+                                    }
+                                },
+                                "x-ms-azure-resource": true,
+                                "type": "object"
+                            },
+                            "readOnly": true,
+                            "type": "array"
+                        },
+                        "encapsulation": {
+                            "description": "Encapsulation method on physical ports.",
+                            "enum": [
+                                "Dot1Q",
+                                "QinQ"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ExpressRoutePortsEncapsulation"
+                            }
+                        },
+                        "etherType": {
+                            "description": "Ether type of the physical port.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "links": {
+                            "description": "The set of physical links of the ExpressRoutePort resource",
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "description": "Reference to another subresource.",
+                                        "properties": {
+                                            "id": {
+                                                "description": "Resource ID.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "x-ms-azure-resource": true,
+                                        "type": "object"
+                                    }
+                                ],
+                                "description": "ExpressRouteLink child resource definition.",
+                                "properties": {
+                                    "etag": {
+                                        "description": "A unique read-only string that changes whenever the resource is updated.",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Name of child port resource that is unique among child port resources of the parent.",
+                                        "type": "string"
+                                    },
+                                    "properties": {
+                                        "description": "ExpressRouteLink properties",
+                                        "x-ms-client-flatten": true,
+                                        "properties": {
+                                            "adminState": {
+                                                "description": "Administrative state of the physical port",
+                                                "enum": [
+                                                    "Enabled",
+                                                    "Disabled"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "ExpressRouteLinkAdminState"
+                                                }
+                                            },
+                                            "connectorType": {
+                                                "description": "Physical fiber port type.",
+                                                "enum": [
+                                                    "LC",
+                                                    "SC"
+                                                ],
+                                                "readOnly": true,
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "ExpressRouteLinkConnectorType"
+                                                }
+                                            },
+                                            "interfaceName": {
+                                                "description": "Name of Azure router interface.",
+                                                "readOnly": true,
+                                                "type": "string"
+                                            },
+                                            "patchPanelId": {
+                                                "description": "Mapping between physical port to patch panel port.",
+                                                "readOnly": true,
+                                                "type": "string"
+                                            },
+                                            "provisioningState": {
+                                                "description": "The provisioning state of the ExpressRouteLink resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.",
+                                                "readOnly": true,
+                                                "type": "string"
+                                            },
+                                            "rackId": {
+                                                "description": "Mapping of physical patch panel to rack.",
+                                                "readOnly": true,
+                                                "type": "string"
+                                            },
+                                            "routerName": {
+                                                "description": "Name of Azure router associated with physical port.",
+                                                "readOnly": true,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "title": "ExpressRouteLink Resource Properties"
+                                    }
+                                },
+                                "title": "ExpressRouteLink",
+                                "type": "object"
+                            },
+                            "readOnly": false,
+                            "title": "ExpressRouteLink Sub-Resources",
+                            "type": "array"
+                        },
+                        "mtu": {
+                            "description": "Maximum transmission unit of the physical port pair(s)",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "peeringLocation": {
+                            "description": "The name of the peering location that the ExpressRoutePort is mapped to physically.",
+                            "type": "string"
+                        },
+                        "provisionedBandwidthInGbps": {
+                            "description": "Aggregate Gbps of associated circuit bandwidths.",
+                            "readOnly": true,
+                            "type": "number"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state of the ExpressRoutePort resource. Possible values are: 'Succeeded', 'Updating', 'Deleting', and 'Failed'.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "resourceGuid": {
+                            "description": "The resource GUID property of the ExpressRoutePort resource.",
+                            "type": "string"
+                        }
+                    },
+                    "title": "ExpressRoutePort Properties"
+                }
+            },
+            "title": "ExpressRoute Port",
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

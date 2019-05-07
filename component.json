@@ -1,0 +1,220 @@
+{
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/network-expressRoutePort/2018-12-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ExpressRoutePorts_List": {
+            "main": "./lib/actions/ExpressRoutePorts_List.js",
+            "title": "List all the ExpressRoutePort resources in the specified subscription",
+            "description": "List all the ExpressRoutePort resources in the specified subscription",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePortsLocations_List": {
+            "main": "./lib/actions/ExpressRoutePortsLocations_List.js",
+            "title": "Retrieves all ExpressRoutePort peering locations. Does not return available bandwidths for each location. Available bandwidths can only be obtained when retrieving a specific peering location.",
+            "description": "Retrieves all ExpressRoutePort peering locations. Does not return available bandwidths for each location. Available bandwidths can only be obtained when retrieving a specific peering location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePortsLocations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePortsLocations_Get": {
+            "main": "./lib/actions/ExpressRoutePortsLocations_Get.js",
+            "title": "Retrieves a single ExpressRoutePort peering location, including the list of available bandwidths available at said peering location.",
+            "description": "Retrieves a single ExpressRoutePort peering location, including the list of available bandwidths available at said peering location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePortsLocations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePorts_ListByResourceGroup": {
+            "main": "./lib/actions/ExpressRoutePorts_ListByResourceGroup.js",
+            "title": "List all the ExpressRoutePort resources in the specified resource group.",
+            "description": "List all the ExpressRoutePort resources in the specified resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePorts_Delete": {
+            "main": "./lib/actions/ExpressRoutePorts_Delete.js",
+            "title": "Deletes the specified ExpressRoutePort resource.",
+            "description": "Deletes the specified ExpressRoutePort resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePorts_Get": {
+            "main": "./lib/actions/ExpressRoutePorts_Get.js",
+            "title": "Retrieves the requested ExpressRoutePort resource.",
+            "description": "Retrieves the requested ExpressRoutePort resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePorts_UpdateTags": {
+            "main": "./lib/actions/ExpressRoutePorts_UpdateTags.js",
+            "title": "Update ExpressRoutePort tags",
+            "description": "Update ExpressRoutePort tags",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_UpdateTags.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRoutePorts_CreateOrUpdate": {
+            "main": "./lib/actions/ExpressRoutePorts_CreateOrUpdate.js",
+            "title": "Creates or updates the specified ExpressRoutePort resource.",
+            "description": "Creates or updates the specified ExpressRoutePort resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRoutePorts_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRouteLinks_List": {
+            "main": "./lib/actions/ExpressRouteLinks_List.js",
+            "title": "Retrieve the ExpressRouteLink sub-resources of the specified ExpressRoutePort resource.",
+            "description": "Retrieve the ExpressRouteLink sub-resources of the specified ExpressRoutePort resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRouteLinks_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExpressRouteLinks_Get": {
+            "main": "./lib/actions/ExpressRouteLinks_Get.js",
+            "title": "Retrieves the specified ExpressRouteLink resource.",
+            "description": "Retrieves the specified ExpressRouteLink resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExpressRouteLinks_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
